@@ -23,11 +23,9 @@ public class FxiProviderController {
 	IFxiProviderService fxiProviderService;
 
 	@PostMapping("/providers")
-	public ResponseEntity<?> getProviders(@RequestBody Provider provider,
-			@RequestHeader HttpHeaders headers) {
+	public ResponseEntity<?> getProviders(@RequestBody Provider provider, @RequestHeader HttpHeaders headers) {
 
 		List<ProviderResponse> providerList = fxiProviderService.getProviderDetails(provider);
-
 		if (providerList.isEmpty())
 			return new ResponseEntity<Object>(new ArrayList<>(), HttpStatus.NO_CONTENT);
 
