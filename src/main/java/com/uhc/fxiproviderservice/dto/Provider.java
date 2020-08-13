@@ -1,33 +1,51 @@
 package com.uhc.fxiproviderservice.dto;
 
-import java.util.List;
-
-import javax.validation.constraints.NotEmpty;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 
 public class Provider {
 
-	@NonNull
-	@NotEmpty
+	public Config Config;
+	public OPTIONIPCOLL OPTION_IP_COLL;
+	public RECXPFH REC_XPFH;
+	public RECGRP REC_GRP;
 
-	List<String> option_Ip_Coll_List;
+	static  class Config {
+		public String FacetsIdentity;
+		public String Region;
+	}
 
-	List<String> rec_Xpfh_List;
+	static class OPTIONIPCOLL {
+		public String OPTION_NAME;
+		public String OPTION_VALUE;
+	}
 
-	List<String> rec_Prac_List;
+	static class RECXPFH {
+		public String XPFH_UPDATE_CD;
+		public String XPFH_ENTITY_TYPE;
+		public String MCTN_ID;
+		public String PRPR_ID;
+	}
 
-	List<String> rec_Facility_List;
+	static class RECPRPR {
+		public String PRPR_UPDATE_CD;
+		public String PRPR_ENTITY;
+		public String PRPR_CL_EFT_IND;
+		public String PRPR_EDI_DEST_ID;
+		public String PRPR_RA_DEST_IND;
+	}
 
-	List<String> rec_Group_List;
+	static class RECMCBR {
+		public String MCBD_ID;
+		public String MCBR_ACCT_NO;
+		public String MCBR_ACCT_NAME;
+		public String MCBR_ACCT_NO_QUA;
+	}
 
-	List<String> rec_Ipa_List;
-
+	static class RECGRP {
+		public RECPRPR REC_PRPR;
+		public RECMCBR REC_MCBR;
+	}
 }
