@@ -3,6 +3,8 @@ package com.uhc.fxiproviderservice.api;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -21,10 +23,14 @@ import com.uhc.fxiproviderservice.service.IFxiProviderService;
 public class FxiProviderController {
 	@Autowired
 	IFxiProviderService fxiProviderService;
+	
+	Logger logger=LoggerFactory.getLogger(FxiProviderController.class);
 
 	@PostMapping("/providers")
 	public ResponseEntity<?> getProviders(@RequestBody Provider provider, @RequestHeader HttpHeaders headers) {
 
+		logger.info("Inside getProviders"+provider.toString());
+		
 		List<ProviderResponse> providerList = fxiProviderService.getProviderDetails(provider);
 		if (providerList.isEmpty())
 			return new ResponseEntity<Object>(new ArrayList<>(), HttpStatus.NO_CONTENT);
